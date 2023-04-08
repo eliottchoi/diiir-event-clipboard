@@ -133,7 +133,7 @@
     <div id="overlay"></div>
     <div class="container">
         <img id="logo" src="https://diiir.co.kr/assets/logo.png" alt="Logo">
-        <h1>친구가 참여하면<br>당첨될 확률이 높아져요!</h1>
+        <h1 id="redirection">친구가 참여하면<br>당첨될 확률이 높아져요!</h1>
         <h2>#뒤르 #정대진 #히티</h2>
         <img id="instagram-image" src="https://i.ibb.co/722NXD1/instagram-superbody.png" alt="daejin-diiir">
         <p id="desc">이미지를 저장해서 함께 공유해보세요.</p>
@@ -148,6 +148,19 @@
             if (!results) return null;
             if (!results[2]) return '';
             return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        function startCountdownAndRedirect() {
+            let countdown = 10;
+            const intervalId = setInterval(() => {
+                document.getElementById("redirection").innerHTML = `${countdown}초 뒤 <br> 정대진 히티 스페이스로 이동합니다!`;
+                countdown--;
+                if (countdown < 0) {
+                    clearInterval(intervalId);
+                    const referrerid = getParameterByName("referrerid");
+                    window.location.href = `https://hity.io/superbody__jin?event=diiir_referral_230410&id=${referrerid}`;
+                }
+            }, 1000);
         }
 
         async function copyToClipboard() {
@@ -167,6 +180,8 @@
             } catch (err) {
                 console.error('Failed to copy text: ', err);
             }
+
+            startCountdownAndRedirect();
         }
 
         function startBlinking() {
