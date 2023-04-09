@@ -158,14 +158,14 @@
                 if (countdown < 0) {
                     clearInterval(intervalId);
                     const referrerid = getParameterByName("referrerid");
-                    window.location.href = `https://hity.io/superbody__jin?event=diiir_referral_230410&id=${referrerid}`;
+                    window.location.href = `https://hity.io/superbody__jin?id=${referrerid}`;
                 }
             }, 1000);
         }
 
         async function copyToClipboard() {
             const referrerid = getParameterByName("referrerid");
-            const linkToCopy = `hity.io/superbody__jin?event=diiir_referral_230410&referrerid=${referrerid}`;
+            const linkToCopy = `hity.io/superbody__jin?referrerid=${referrerid}`;
 
             try {
                 await navigator.clipboard.writeText(linkToCopy);
