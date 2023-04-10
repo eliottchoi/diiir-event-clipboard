@@ -176,7 +176,8 @@
 
         async function copyToClipboard() {
             const referrerid = getParameterByName("referrerid");
-            const linkToCopy = `hity.io/superbody__jin?referrerid=${referrerid}`;
+            const linkToCopy = `https://hity.io/superbody__jin?referrerid=${referrerid}`;
+            const copyText = ``
 
             try {
                 await navigator.clipboard.writeText(linkToCopy);
